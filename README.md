@@ -9,10 +9,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/farasjibran/EbookProject">
-    <img src="assets/icon.png" alt="Logo" width="25%">
-  </a>
-
   <h3 align="center">E-Book</h3>
 
   <p align="center">
