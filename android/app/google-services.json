@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "100888581832",
+    "project_id": "ebook-dd2fb",
+    "storage_bucket": "ebook-dd2fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100888581832:android:f2afee86ebf1703e6eb7fd",
+        "android_client_info": {
+          "package_name": "com.ebookproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100888581832-t3dn3mjkke0giqus17fc3igmunun4es0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfaHzOrAozIVayYivLJLnAZr0RpIzD0TE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100888581832-t3dn3mjkke0giqus17fc3igmunun4es0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
