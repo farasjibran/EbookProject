@@ -12,7 +12,7 @@
   <h3 align="center">E-Book</h3>
 
   <p align="center">
-    Add your knowledge here
+    Add your <b>knowledge</b> here
     <br />
     <a href="https://github.com/farasjibran/EbookProject"><strong>Explore the docs »</strong></a>
     <br />
