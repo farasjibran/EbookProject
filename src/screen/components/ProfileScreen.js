@@ -1,7 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-shadow */
 import React, {useState, useEffect} from 'react';
-import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,6 +19,7 @@ import firestore from '@react-native-firebase/firestore';
 
 const ProfileScreen = () => {
   const [initializing, setInitializing] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState();
   const [userinfo, SetUserInfo] = useState();
 
@@ -28,6 +36,7 @@ const ProfileScreen = () => {
   }, []);
 
   function getUserInfo() {
+    setLoading(true);
     if (user) {
       firestore()
         .collection('Users')
@@ -43,6 +52,9 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     getUserInfo();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [user]);
 
   function logoutButton() {
@@ -50,38 +62,52 @@ const ProfileScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.container2}>
-        <View style={styles.imageusername}>
-          {user == null ? (
-            <></>
-          ) : (
-            <>
-              <Image
-                source={require('../../../assets/profile.png')}
-                style={styles.profileimage}
-              />
-              <View style={styles.textcontainer}>
-                <Text style={styles.username}>
-                  {userinfo == null ? <></> : userinfo.fullname}
-                </Text>
-                <Text style={styles.email}>
-                  {userinfo == null ? <></> : userinfo.email}
-                </Text>
-              </View>
-            </>
-          )}
-        </View>
+    <>
+      {loading ? (
+        <ActivityIndicator
+          visible={loading}
+          size="large"
+          color="#FFAB48"
+          style={{justifyContent: 'center', marginTop: hp(50)}}
+        />
+      ) : (
+        <View style={styles.container}>
+          <View style={styles.container2}>
+            <Icon name="create-outline" style={styles.iconedit} />
+            <View style={styles.imageusername}>
+              {user == null ? (
+                <></>
+              ) : (
+                <>
+                  <Image
+                    source={require('../../../assets/profile.png')}
+                    style={styles.profileimage}
+                  />
+                  <View style={styles.textcontainer}>
+                    <Text style={styles.username}>
+                      {userinfo == null ? <></> : userinfo.fullname}
+                    </Text>
+                    <Text style={styles.email}>
+                      {userinfo == null ? <></> : userinfo.email}
+                    </Text>
+                  </View>
+                </>
+              )}
+            </View>
 
-        {/* Logout Button */}
-        <TouchableOpacity
-          style={styles.buttonlogout}
-          onPress={() => logoutButton()}>
-          <Icon name="power-outline" style={styles.icon} />
-          <Text style={styles.textlogout}>Logout</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+            {/* Logout Button */}
+            <TouchableOpacity
+              style={styles.buttonlogout}
+              onPress={() => logoutButton()}>
+              <Icon name="power-outline" style={styles.icon} />
+              <Text style={styles.textlogout}>Logout</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.textver}>Ver 1.0</Text>
+          </View>
+        </View>
+      )}
+    </>
   );
 };
 
@@ -100,8 +126,8 @@ const styles = StyleSheet.create({
   },
 
   profileimage: {
-    width: wp(30),
-    height: hp(16),
+    width: 120,
+    height: 120,
   },
 
   textcontainer: {
@@ -135,6 +161,22 @@ const styles = StyleSheet.create({
     color: '#FF0000',
     fontWeight: 'bold',
     marginLeft: wp(3),
+  },
+
+  iconedit: {
+    fontSize: wp(7),
+    color: '#000000',
+    marginLeft: wp(83),
+    marginTop: hp(-6),
+    marginBottom: hp(2),
+  },
+
+  textver: {
+    fontSize: wp(3.5),
+    color: '#8F8F8F',
+    marginTop: '100%',
+    marginLeft: wp(-5),
+    textAlign: 'center',
   },
 });
 

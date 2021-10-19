@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
 
   arrowicon: {
     fontSize: hp(3),
-    color: '#858585',
+    color: '#000000',
   },
 
   textregister: {
