@@ -96,11 +96,19 @@ const ProfileScreen = () => {
               )}
             </View>
 
+            {/* Saved Book Button */}
+            <TouchableOpacity
+              style={styles.buttonsaved}
+              onPress={() => alert('show alert')}>
+              <Icon name="bookmark-outline" style={styles.iconsaved} />
+              <Text style={styles.textsaved}>Your Saved Book</Text>
+            </TouchableOpacity>
+
             {/* Logout Button */}
             <TouchableOpacity
               style={styles.buttonlogout}
               onPress={() => logoutButton()}>
-              <Icon name="power-outline" style={styles.icon} />
+              <Icon name="power-outline" style={styles.iconlogout} />
               <Text style={styles.textlogout}>Logout</Text>
             </TouchableOpacity>
 
@@ -147,12 +155,29 @@ const styles = StyleSheet.create({
     color: '#8F8F8F',
   },
 
+  buttonsaved: {
+    flexDirection: 'row',
+    marginTop: hp(5),
+  },
+
+  iconsaved: {
+    fontSize: wp(7),
+    color: '#FF8A00',
+  },
+
+  textsaved: {
+    fontSize: wp(4.5),
+    color: '#76644F',
+    fontWeight: 'bold',
+    marginLeft: wp(3),
+  },
+
   buttonlogout: {
     flexDirection: 'row',
     marginTop: hp(5),
   },
 
-  icon: {
+  iconlogout: {
     fontSize: wp(7),
     color: '#FF0000',
   },
