@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
+import SavedScreen from './SavedScreen';
 
 function MyTabs() {
   const Tab = createBottomTabNavigator();
@@ -28,7 +29,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Saved"
-        component={HomeScreen}
+        component={SavedScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <Icon name="bookmark-outline" color={color} size={size} />
